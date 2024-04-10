@@ -4,16 +4,16 @@ const find = (words, note) => {
   for(let char of note) {
     noteStore[char] = (noteStore[char] ?? 0) + 1;
   }
-  const wordsStore = {};
+  
   for (let word of words) {
-      wordsStore[word] = {};
+    const wordStore = {};
       for(let char of word) {
-        wordsStore[word][char] = (wordsStore[word][char] ?? 0) + 1;
+        wordStore[char] = (wordStore[char] ?? 0) + 1;
       }
       let isMatch = 0;
-      for (let key in wordsStore[word]) {
+      for (let key in wordStore) {
           if(noteStore.hasOwnProperty(key)) {
-              if (noteStore[key] >= wordsStore[word][key]) {
+              if (noteStore[key] >= wordStore[key]) {
                   isMatch++;
               }
           }
