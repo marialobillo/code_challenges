@@ -2,22 +2,13 @@
 const find = (words, note) => {
   const noteStore = {};
   for(let char of note) {
-      if (noteStore[char]) {
-          noteStore[char] += 1;
-      }
-      else {
-          noteStore[char] = 1;
-      }
+    noteStore[char] = (noteStore[char] ?? 0) + 1;
   }
   const wordsStore = {};
   for (let word of words) {
       wordsStore[word] = {};
       for(let char of word) {
-          if (wordsStore[word][char]) {
-              wordsStore[word][char] += 1;
-          } else {
-              wordsStore[word][char] = 1;
-          }
+        wordsStore[word][char] = (wordsStore[word][char] ?? 0) + 1;
       }
       let isMatch = 0;
       for (let key in wordsStore[word]) {
